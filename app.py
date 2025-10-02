@@ -1,12 +1,21 @@
-import boto3
+# app.py
 
-AWS_ACCESS_KEY_ID = "TON_ACCESS_KEY"
-AWS_SECRET_ACCESS_KEY = "TON_SECRET_KEY"
-AWS_REGION = "us-east-1"  # ← ici tu mets la région de tes buckets
+from flask import Flask, render_template
+from aws_config import s3_client
 
-s3_client = boto3.client(
-    "s3",
-    aws_access_key_id=AWS_ACCESS_KEY_ID,
-    aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
-    region_name=AWS_REGION
-)
+app = Flask(__name__)
+
+def list_buckets():
+    """Récupère la liste des buckets S3"""
+    response = s3_client.list_buckets()
+    buckets = [bucket["Name"] for bucket in response.get("Buckets", [])]
+    return buckets
+
+@app.route("/")
+def home():
+    buckets = list_buckets()
+    return render_template("index.html", buckets=buckets)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
+
