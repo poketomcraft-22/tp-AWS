@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Mini console AWS</title>
+    <meta charset="UTF-8">
+    <title>Outil Infra AWS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Bienvenue dans ta console AWS 🚀</h1>
-    <ul>
-        <li><a href="/ec2">Lister les instances EC2</a></li>
-        <li><a href="/s3">Lister les buckets S3</a></li>
-    </ul>
+    <h1>Outil Infra AWS</h1>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('list_ec2') }}">Instances EC2</a></li>
+            <li><a href="{{ url_for('list_buckets') }}">Buckets S3</a></li>
+        </ul>
+    </nav>
 </body>
 </html>
-
