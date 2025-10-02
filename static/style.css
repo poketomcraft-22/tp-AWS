@@ -40,3 +40,11 @@ button {
 button:hover {
     background: #005bb5;
 }
+
+/* Styles des messages flash */
+ul li.success {
+    color: green;
+}
+ul li.error {
+    color: red;
+}
