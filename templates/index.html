@@ -2,16 +2,20 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Outil Infra AWS</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Mes Buckets AWS</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1 { color: #333; }
+        ul { list-style-type: none; padding: 0; }
+        li { background: #f2f2f2; margin: 5px 0; padding: 10px; border-radius: 5px; }
+    </style>
 </head>
 <body>
-    <h1>Outil Infra AWS</h1>
-    <nav>
-        <ul>
-            <li><a href="{{ url_for('ec2_page') }}">Instances EC2</a></li>
-            <li><a href="{{ url_for('s3_page') }}">Buckets S3</a></li>
-        </ul>
-    </nav>
+    <h1>Mes Buckets AWS</h1>
+    <ul>
+        {% for bucket in buckets %}
+        <li>{{ bucket }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
