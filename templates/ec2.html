@@ -1,1 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Instances EC2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Liste des Instances EC2</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>État</th>
+                <th>Type</th>
+                <th>Zone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for instance in instances %}
+            <tr>
+                <td>{{ instance.InstanceId }}</td>
+                <td>{{ instance.State }}</td>
+                <td>{{ instance.Type }}</td>
+                <td>{{ instance.Zone }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ url_for('home') }}">Retour</a>
+</body>
+</html>
 
