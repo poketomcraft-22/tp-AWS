@@ -1,1 +1,40 @@
-#on verra plus tard
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Buckets S3</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Gestion des Buckets S3</h1>
+
+    <h2>Liste des Buckets</h2>
+    <ul>
+        {% for bucket in buckets %}
+            <li>{{ bucket }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Créer un Bucket</h2>
+    <form action="/s3/create" method="post">
+        <input type="text" name="bucket_name" placeholder="Nom du bucket" required>
+        <button type="submit">Créer</button>
+    </form>
+
+    <h2>Uploader un fichier</h2>
+    <form action="/s3/upload" method="post" enctype="multipart/form-data">
+        <input type="text" name="bucket_name" placeholder="Nom du bucket" required>
+        <input type="file" name="file" required>
+        <button type="submit">Uploader</button>
+    </form>
+
+    <h2>Supprimer un Bucket</h2>
+    <form action="/s3/delete" method="post">
+        <input type="text" name="bucket_name" placeholder="Nom du bucket" required>
+        <button type="submit">Supprimer</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('home') }}">Retour</a>
+</body>
+</html>
