@@ -7,6 +7,8 @@
 </head>
 <body>
     <h1>Liste des Instances EC2</h1>
+
+    {% if instances %}
     <table border="1">
         <thead>
             <tr>
@@ -27,8 +29,11 @@
             {% endfor %}
         </tbody>
     </table>
+    {% else %}
+        <p>Aucune instance trouvée.</p>
+    {% endif %}
+
     <br>
-    <a href="{{ url_for('home') }}">Retour</a>
+    <a href="{{ url_for('home') }}">Retour à l'accueil</a>
 </body>
 </html>
-
